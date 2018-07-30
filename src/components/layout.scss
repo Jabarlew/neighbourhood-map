@@ -1,10 +1,20 @@
 :local {
-  .container {
-    width: 100vw;
-    height: 100vh;
-  }
-}
+  $header-height: 80px;
 
-body {
-  margin: 0;
+  .container {
+    height: calc(100vh - #{$header-height});
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $header-height;
+    background-color: #333;
+
+    > h1 {
+      font-size: 1.6rem;
+      color: #ddd;
+    }
+  }
 }
