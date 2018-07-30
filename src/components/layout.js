@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './layout.scss';
+import Map from './map';
 
 
 const Layout = () => (
@@ -7,6 +8,7 @@ const Layout = () => (
     <h1>
       hello world
     </h1>
+    <Map />
   </div>
 );
 
