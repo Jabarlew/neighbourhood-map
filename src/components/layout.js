@@ -5,10 +5,13 @@ import Map from './map';
 
 const Layout = () => (
   <div className={styles.container}>
-    <h1>
-      hello world
-    </h1>
-    <Map />
+    <header>
+
+    </header>
+
+    <main>
+      <Map />
+    </main>
   </div>
 );
 

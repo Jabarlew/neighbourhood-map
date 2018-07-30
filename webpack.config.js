@@ -48,7 +48,6 @@ module.exports = {
       },
       {
         test: /\.s?css$/, // Matches .scss and .css
-        exclude: /node_modules/,
         use: styleBundle.extract({
           fallback: 'style-loader',
           use: [
