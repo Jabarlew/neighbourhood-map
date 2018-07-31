@@ -1,4 +1,6 @@
 import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTimes, faCoffee } from '@fortawesome/free-solid-svg-icons';
 import styles from './layout.scss';
 import Map from './map';
 import Sidebar from './sidebar';
@@ -20,4 +22,5 @@ const Layout = () => (
   </div>
 );
 
+library.add(faTimes, faCoffee);
 export default Layout;

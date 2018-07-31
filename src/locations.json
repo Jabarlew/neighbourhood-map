@@ -1,8 +1,23 @@
 [
   {
-    "name": "EY"
+    "name": "Burger King",
+    "position": {"lat": 52.33697552, "lng": 14.54754263}
   },
   {
-    "name": "Bob's Burgers"
+    "name": "McDonld's Restaurant",
+    "position": {"lat": 52.3474299, "lng": 14.5507479}
+  },
+  {
+    "name": "Cafe Panorama",
+    "position": {"lat": 52.3487763, "lng": 14.5535274}
+  },
+  {
+    "name": "Café Am Kleistpark",
+    "position": {"lat": 52.3432953, "lng": 14.541147}
+  },
+  {
+    "name": "Restaurant Wintergarten",
+    "position": {"lat": 52.3255831, "lng": 14.5497863}
   }
+
 ]
