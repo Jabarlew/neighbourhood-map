@@ -3,6 +3,9 @@
   $break-small: 320px;
   $break-medium: 600px;
   $break-large: 1200px;
+  $cool-blue: #41ABDD;
+  $cool-white: #EBEEF2;
+  $cool-orange: #B7DA3C;
 
   .container {
     height: calc(100vh - #{$header-height});
@@ -13,11 +16,13 @@
     align-items: center;
     justify-content: center;
     height: $header-height;
-    background-color: #333;
+    background-color: $cool-blue;
 
     > h1 {
-      font-size: 1.6rem;
-      color: #ddd;
+      font-size: 2.5rem;
+      color: $cool-white;
+      font-family: 'Niconne', cursive;
+
     }
   }
 
@@ -29,7 +34,7 @@
       width: 35%;
       height: 100vh;
       z-index: 1;
-      background-color: #333;
+      background-color: $cool-white;
       padding-left: 20px;
       padding-right: 20px;
       box-shadow: 13px 10px 45px -2px rgba(0,0,0,0.55);
@@ -51,12 +56,12 @@
         height: 80px;
 
         > .sidebarTitle {
-          color: #ddd;
+          color: $cool-blue;
           font-size: 1.2rem;
         }
 
         > .closeButton {
-          color: #ddd;
+          color: $cool-blue;
           // margin-right: 30px;
           font-size: 1.5rem;
           cursor: pointer;
@@ -71,16 +76,15 @@
         color: #ddd;
 
         > li {
+          color: $cool-blue;
           margin-top: 10px;
           height: 50px;
-          border: 1px solid red;
           display:flex;
           align-items: center;
           justify-content: start;
-          background-color: #333;
-          box-shadow: 1px 1px 20px 0px #000000;
+          background-color: $cool-white;
+          box-shadow: 10px 10px 77px -10px rgba(0,0,0,0.62);
           text-shadow: 1px 1px 20px 0px #000000;
-          border: solid #fff 1px;
           text-decoration: none;
           cursor: pointer;
           padding-left: 10px;
@@ -90,11 +94,12 @@
             height: 80px;
           }
           &:hover {
-            background-color: #1E62d0;
+            background-color: $cool-orange;
           }
 
           > .coffeeIcon {
             margin-right: 20px;
+            color: $cool-blue;
           }
         }
       }
