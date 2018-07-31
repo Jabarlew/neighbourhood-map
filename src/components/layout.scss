@@ -1,5 +1,8 @@
 :local {
   $header-height: 80px;
+  $break-small: 320px;
+  $break-medium: 600px;
+  $break-large: 1200px;
 
   .container {
     height: calc(100vh - #{$header-height});
@@ -30,6 +33,15 @@
       padding-left: 20px;
       padding-right: 20px;
       box-shadow: 13px 10px 45px -2px rgba(0,0,0,0.55);
+      @media screen and (min-width: $break-small){
+        width: 80%;
+      }
+      @media screen and (min-width: $break-medium){
+        width: 50%;
+      }
+      @media screen and (min-width: $break-large){
+        width: 25%;
+      }
 
 
       > .inline {
@@ -70,10 +82,12 @@
           text-shadow: 1px 1px 20px 0px #000000;
           border: solid #fff 1px;
           text-decoration: none;
-          // display: inline-block;
           cursor: pointer;
           padding-left: 10px;
           padding-right: 20px;
+          @media screen and (min-width: $break-small) {
+            height: 80px;
+          }
           &:hover {
             background-color: #1E62d0;
           }
