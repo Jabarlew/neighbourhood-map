@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './layout.scss';
 import locations from '../locations';
 
 
-const Sidebar = () => (
+const Sidebar = ({ updateLocation }) => (
   <aside className={styles.sidebar}>
     <div className={styles.inline}>
       <h2 className={styles.sidebarTitle}>
@@ -17,7 +18,10 @@ const Sidebar = () => (
       <input type="text" className={styles.input} aria-label="Search" placeholder="Filter Locations" />
       <ul>
         {locations.map(location => (
-          <li key={location.name}>
+          <li
+            key={location.name}
+            onClick={() => updateLocation(location.position.lat, location.position.lng)}
+          >
             <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
             {location.name}
           </li>
@@ -27,5 +31,8 @@ const Sidebar = () => (
   </aside>
 );
 
+Sidebar.propTypes = {
+  updateLocation: PropTypes.func.isRequired,
+}
 
 export default Sidebar;

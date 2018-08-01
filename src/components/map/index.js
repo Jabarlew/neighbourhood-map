@@ -1,20 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose, withProps } from 'recompose';
 import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
   Marker,
-  InfoWindow,
+  // InfoWindow,
 } from 'react-google-maps';
 import Loading from '../loading';
 import locations from '../../locations';
 
 
-const GMap = () => (
+const GMap = ({ lat, lng }) => (
   <GoogleMap
     defaultZoom={15}
-    defaultCenter={{ lat: 52.33697552, lng: 14.54754263 }}
+    center={{ lat, lng }}
   >
     {locations.map(location => (
       <Marker
@@ -39,6 +40,12 @@ const GMap = () => (
 
   </GoogleMap>
 );
+
+GMap.propTypes = {
+  lat: PropTypes.number.isRequired,
+  lng: PropTypes.number.isRequired,
+};
+
 
 // wrapped component lol (Higher Order Component [HOC])
 export default compose(
