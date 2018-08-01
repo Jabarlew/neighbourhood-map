@@ -5,6 +5,7 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
+  InfoWindow,
 } from 'react-google-maps';
 import Loading from '../loading';
 import locations from '../../locations';
@@ -22,11 +23,20 @@ const GMap = () => (
           location.position
         }
       />
+      // <MarkerWithLabel
+      //   key={location.name}
+      //   position={
+      //     location.position
+      //   }
+      //   labelAnchor={new google.maps.Point(0, 0)}
+      //   labelStyle={{ backgroundColor: 'yellow', fontSize: '32px', padding: '16px' }}
+      // >
+      //   <div>
+      //     {location.name}
+      //   </div>
+      // </MarkerWithLabel>
     ))}
-    {/* <Marker
 
-      position={{ lat: -34.397, lng: 150.644 }}
-    /> */}
   </GoogleMap>
 );
 
