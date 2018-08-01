@@ -20,10 +20,11 @@ const Sidebar = ({ updateLocation }) => (
         {locations.map(location => (
           <li
             key={location.name}
-            onClick={() => updateLocation(location.position.lat, location.position.lng)}
           >
-            <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
-            {location.name}
+            <button type="submit" onClick={() => updateLocation(location.position.lat, location.position.lng)}>
+              <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
+              {location.name}
+            </button>
           </li>
         ))}
       </ul>
@@ -33,6 +34,6 @@ const Sidebar = ({ updateLocation }) => (
 
 Sidebar.propTypes = {
   updateLocation: PropTypes.func.isRequired,
-}
+};
 
 export default Sidebar;
