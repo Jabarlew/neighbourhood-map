@@ -5,7 +5,7 @@ import styles from './layout.scss';
 import locations from '../locations';
 
 
-const Sidebar = ({ updateLocation }) => (
+const Sidebar = ({ updateLocation, toggleSidebar }) => (
   <div>
     <aside className={styles.sidebar}>
       <div className={styles.inline}>
@@ -16,7 +16,7 @@ const Sidebar = ({ updateLocation }) => (
           type="button"
           className={styles.closeButton}
           onClick={() => {
-
+            toggleSidebar();
           }}
         >
           <FontAwesomeIcon icon="times" />

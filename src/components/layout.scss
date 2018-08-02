@@ -33,7 +33,7 @@
     padding-left: 20px;
     padding-right: 20px;
     box-shadow: 13px 10px 45px -2px rgba(0, 0, 0, 0.55);
-    transition: all 1s;
+    transition: all .5s;
     @media screen and (min-width: $break-small) {
       width: 80%;
     }

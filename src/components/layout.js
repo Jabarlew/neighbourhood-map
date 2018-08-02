@@ -28,7 +28,6 @@ class Layout extends React.Component {
 
     return (
       <div className={`${styles.container} ${isOpen ? null : styles.on}`}>
-
         <header className={styles.header}>
           <button type="button" onClick={this.toggleSidebar}>
             <FontAwesomeIcon className={styles.menuIcon} icon="bars" />
@@ -40,7 +39,7 @@ class Layout extends React.Component {
 
         <Sidebar
           updateLocation={updateLocation}
-          turnOnSidebar={this.turnOnSidebar}
+          toggleSidebar={this.toggleSidebar}
           {...this.state}
         />
 
