@@ -9,8 +9,8 @@ export default class App extends React.Component {
     this.updateLocation = this.updateLocation.bind(this);
 
     this.state = {
-      lat: 50.110924,
-      lng: 8.682127,
+      lat: 52.34714,
+      lng: 14.55062,
     };
   }
 
