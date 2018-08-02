@@ -13,38 +13,52 @@ class Sidebar extends React.Component {
     };
   }
 
+  turnOnSidebar() {
+    this.setState({ isOpen: true });
+  }
+
   render() {
     const { updateLocation } = this.props;
+    const close = this.state;
     return (
-      <aside className={styles.sidebar}>
-        <div className={styles.inline}>
-          <h2 className={styles.sidebarTitle}>
-            Main Menu
-          </h2>
-          <button type="button" className={styles.closeButton}>
-            <FontAwesomeIcon icon="times" />
-          </button>
-        </div>
-        <nav>
-          {/* Search */}
-          <input type="text" className={styles.input} aria-label="Search" placeholder="Filter Locations" />
-          <ul>
-            {locations.map(location => (
-              <li key={location.name}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    updateLocation(location.position.lat, location.position.lng);
-                  }}
-                >
-                  <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
-                  {location.name}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </aside>
+      <div className={close.isOpen ? styles.on : null}>
+        <aside className={styles.sidebar}>
+          <div className={styles.inline}>
+            <h2 className={styles.sidebarTitle}>
+              Main Menu
+            </h2>
+            <button
+              type="button"
+              className={styles.closeButton}
+              onClick={() => {
+                this.turnOnSidebar();
+                console.log(this.state.isOpen);
+              }}
+            >
+              <FontAwesomeIcon icon="times" />
+            </button>
+          </div>
+          <nav>
+            {/* Search */}
+            <input type="text" className={styles.input} aria-label="Search" placeholder="Filter Locations" />
+            <ul>
+              {locations.map(location => (
+                <li key={location.name}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      updateLocation(location.position.lat, location.position.lng);
+                    }}
+                  >
+                    <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
+                    {location.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      </div>
     );
   }
 }

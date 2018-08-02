@@ -6,115 +6,104 @@
   $cool-blue: #41ABDD;
   $cool-white: #EBEEF2;
   $cool-orange: #B7DA3C;
-
   .container {
     height: calc(100vh - #{$header-height});
   }
-
   .header {
     display: flex;
     align-items: center;
     justify-content: center;
     height: $header-height;
     background-color: $cool-blue;
-
-    > h1 {
+    >h1 {
       font-size: 2.5rem;
       color: $cool-white;
       font-family: 'Niconne', cursive;
     }
   }
-
-
-
   .sidebar {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      width: 35%;
-      height: 100vh;
-      z-index: 1;
-      background-color: $cool-white;
-      padding-left: 20px;
-      padding-right: 20px;
-      box-shadow: 13px 10px 45px -2px rgba(0,0,0,0.55);
-      transition: left 1s;
-      @media screen and (min-width: $break-small){
-        width: 80%;
-      }
-      @media screen and (min-width: $break-medium){
-        width: 50%;
-      }
-      @media screen and (min-width: $break-large){
-        width: 25%;
-      }
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 35%;
+    height: 100vh;
+    z-index: 1;
+    background-color: $cool-white;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 13px 10px 45px -2px rgba(0, 0, 0, 0.55);
+    transition: all 1s;
+    @media screen and (min-width: $break-small) {
+      width: 80%;
+    }
+    @media screen and (min-width: $break-medium) {
+      width: 50%;
+    }
+    @media screen and (min-width: $break-large) {
+      width: 25%;
+    }
 
-      .off .sidebar {
-        left: 1500px;
+    >.inline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      >.sidebarTitle {
+        color: $cool-blue;
+        font-size: 1.2rem;
       }
-
-
-      > .inline {
+      >.closeButton {
+        color: $cool-blue; // margin-right: 30px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: none;
+        outline: inherit;
+      }
+    }
+    >nav ul {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      margin-top: 2rem;
+      color: #ddd;
+      >li button {
+        color: $cool-blue;
+        margin-top: 10px;
+        height: 50px;
         display: flex;
-        justify-content: space-between;
+        width: 100%;
         align-items: center;
-        height: 80px;
-
-        > .sidebarTitle {
-          color: $cool-blue;
-          font-size: 1.2rem;
+        justify-content: start;
+        background-color: $cool-white;
+        box-shadow: 10px 10px 77px -10px rgba(0, 0, 0, 0.62);
+        text-shadow: 1px 1px 20px 0px #000000;
+        text-decoration: none;
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 20px;
+        font-size: 1.2rem;
+        @media screen and (min-width: $break-small) {
+          height: 80px;
         }
-
-        > .closeButton {
-          color: $cool-blue;
-          // margin-right: 30px;
-          font-size: 1.5rem;
-          cursor: pointer;
-          background: none;
-          border: none;
-          padding: none;
-          outline: inherit;
-
+        &:hover {
+          background-color: $cool-orange;
         }
-      }
-      > nav ul {
-        display: block;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        margin-top: 2rem;
-        color: #ddd;
-
-        > li button {
+        >.coffeeIcon {
+          margin-right: 20px;
+          margin-left: 20px;
           color: $cool-blue;
-          margin-top: 10px;
-          height: 50px;
-          display:flex;
-          width: 100%;
-          align-items: center;
-          justify-content: start;
-          background-color: $cool-white;
-          box-shadow: 10px 10px 77px -10px rgba(0,0,0,0.62);
-          text-shadow: 1px 1px 20px 0px #000000;
-          text-decoration: none;
-          cursor: pointer;
-          padding-left: 10px;
-          padding-right: 20px;
-          font-size: 1.2rem;
-          @media screen and (min-width: $break-small) {
-            height: 80px;
-          }
-          &:hover {
-            background-color: $cool-orange;
-          }
-
-          > .coffeeIcon {
-            margin-right: 20px;
-            margin-left: 20px;
-            color: $cool-blue;
-          }
         }
       }
+    }
+  }
+
+  .on {
+    .sidebar {
+      left: -500%;
+    }
   }
 }
