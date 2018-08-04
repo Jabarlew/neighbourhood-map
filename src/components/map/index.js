@@ -14,7 +14,7 @@ import locations from '../../locations';
 
 const GMap = ({ lat, lng }) => (
   <GoogleMap
-    defaultZoom={15}
+    defaultZoom={17}
     defaultCenter={{ lat, lng }}
     center={{ lat, lng }}
   >

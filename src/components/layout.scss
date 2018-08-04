@@ -7,17 +7,30 @@
   $cool-white: #EBEEF2;
   $cool-orange: #B7DA3C;
   .container {
-    height: calc(100vh - #{$header-height});
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    width: 100vw;
+    height: 100vh;
+    main {
+      grid-row: 2;
+      height: 100%;
+      >div,
+      >div>div {
+        height: 100% !important;
+        width: auto !important;
+      }
+    }
   }
   .header {
+    position: relative;
     display: flex;
-    // width: 100%;
+    width: 100%;
     align-items: center;
     justify-content: center;
     height: $header-height;
     background-color: $cool-blue;
-    // padding-left: 30px;
-    > .openButton {
+    >.openButton {
       color: $cool-white;
       font-size: 1.5rem;
       cursor: pointer;
@@ -25,14 +38,17 @@
       border: none;
       padding: none;
       outline: inherit;
+      position: absolute;
+      left: 1%;
+      top: 50%;
+      transform: translateY(-50%);
     }
     >h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: $cool-white;
       font-family: 'Niconne', cursive;
     }
   }
-
   .sidebar {
     position: fixed;
     top: 0;
@@ -55,7 +71,6 @@
     @media screen and (min-width: $break-large) {
       width: 25%;
     }
-
     >.inline {
       display: flex;
       justify-content: space-between;
@@ -97,9 +112,9 @@
         cursor: pointer;
         padding-left: 10px;
         padding-right: 20px;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         @media screen and (min-width: $break-small) {
-          height: 80px;
+          height: 70px;
         }
         &:hover {
           background-color: $cool-orange;
@@ -112,7 +127,6 @@
       }
     }
   }
-
   .on {
     .sidebar {
       left: -500%;

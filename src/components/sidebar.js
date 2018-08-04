@@ -5,7 +5,10 @@ import styles from './layout.scss';
 import locations from '../locations';
 
 
-const Sidebar = ({ updateLocation, toggleSidebar }) => (
+const Sidebar = ({
+  updateLocation,
+  toggleSidebar,
+}) => (
   <div>
     <aside className={styles.sidebar}>
       <div className={styles.inline}>
@@ -24,7 +27,12 @@ const Sidebar = ({ updateLocation, toggleSidebar }) => (
       </div>
       <nav>
         {/* Search */}
-        <input type="text" className={styles.input} aria-label="Search" placeholder="Filter Locations" />
+        <input
+          type="text"
+          className={styles.input}
+          aria-label="Search"
+          placeholder="Filter Locations"
+        />
         <ul>
           {locations.map(location => (
             <li key={location.name}>
@@ -47,6 +55,7 @@ const Sidebar = ({ updateLocation, toggleSidebar }) => (
 
 Sidebar.propTypes = {
   updateLocation: PropTypes.func.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

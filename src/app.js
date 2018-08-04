@@ -7,10 +7,13 @@ export default class App extends React.Component {
 
     // Do this for any function passed as a prop
     this.updateLocation = this.updateLocation.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
 
     this.state = {
       lat: 52.34714,
       lng: 14.55062,
+      isOpen: false,
+      search: '',
     };
   }
 
@@ -19,10 +22,19 @@ export default class App extends React.Component {
     this.setState({ lat, lng });
   }
 
+  toggleSidebar() {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+  }
+
   render() {
-    console.log(this.state);
+    // const { lat, lng, updateLocation } = this.props;
+    // const { isOpen } = this.state;
     return (
-      <Layout updateLocation={this.updateLocation} {...this.state} />
+      <Layout
+        updateLocation={this.updateLocation}
+        toggleSidebar={this.toggleSidebar}
+        {...this.state}
+      />
     );
   }
 }

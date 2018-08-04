@@ -7,59 +7,46 @@ import styles from './layout.scss';
 import Map from './map';
 import Sidebar from './sidebar';
 
-class Layout extends React.Component {
-  constructor(...args) {
-    super(...args);
 
-    this.toggleSidebar = this.toggleSidebar.bind(this);
+const Layout = ({
+  updateLocation,
+  toggleSidebar,
+  isOpen,
+  lat,
+  lng,
+}) => (
+  <div className={`${styles.container} ${isOpen ? null : styles.on}`}>
+    <header className={styles.header}>
+      <button
+        className={styles.openButton}
+        type="button"
+        onClick={toggleSidebar}
+      >
+        <FontAwesomeIcon className={styles.menuIcon} icon="bars" />
+      </button>
+      <h1>
+        Neighbourhood Map
+      </h1>
+    </header>
 
-    this.state = {
-      isOpen: false,
-    };
-  }
+    <Sidebar
+      updateLocation={updateLocation}
+      toggleSidebar={toggleSidebar}
+    />
 
-  toggleSidebar() {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
-  }
-
-  render() {
-    const { lat, lng, updateLocation } = this.props;
-    const { isOpen } = this.state;
-
-    return (
-      <div className={`${styles.container} ${isOpen ? null : styles.on}`}>
-        <header className={styles.header}>
-          <button
-            className={styles.openButton}
-            type="button"
-            onClick={this.toggleSidebar}
-          >
-            <FontAwesomeIcon className={styles.menuIcon} icon="bars" />
-          </button>
-          <h1>
-            Neighbourhood Map
-          </h1>
-        </header>
-
-        <Sidebar
-          updateLocation={updateLocation}
-          toggleSidebar={this.toggleSidebar}
-          {...this.state}
-        />
-
-        <main>
-          <Map lat={lat} lng={lng} />
-        </main>
-      </div>
-    );
-  }
-}
+    <main>
+      <Map lat={lat} lng={lng} />
+    </main>
+  </div>
+);
 
 
 Layout.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   updateLocation: PropTypes.func.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
 };
 
 library.add(faTimes, faCoffee, faBars);
