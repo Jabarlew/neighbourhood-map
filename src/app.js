@@ -20,7 +20,6 @@ export default class App extends React.Component {
 
   handleSearchChange(event) {
     this.setState({ search: event.target.value });
-    console.log(this.state.search);
   }
 
   updateLocation(lat, lng) {
