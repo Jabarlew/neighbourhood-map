@@ -9,6 +9,7 @@ import Sidebar from './sidebar';
 
 
 const Layout = ({
+  handleSearchChange,
   updateLocation,
   toggleSidebar,
   isOpen,
@@ -30,6 +31,7 @@ const Layout = ({
     </header>
 
     <Sidebar
+      handleSearchChange={handleSearchChange}
       updateLocation={updateLocation}
       toggleSidebar={toggleSidebar}
     />
@@ -45,6 +47,7 @@ Layout.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   isOpen: PropTypes.bool.isRequired,
+  handleSearchChange: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
 };

@@ -8,6 +8,7 @@ export default class App extends React.Component {
     // Do this for any function passed as a prop
     this.updateLocation = this.updateLocation.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
 
     this.state = {
       lat: 52.34714,
@@ -15,6 +16,11 @@ export default class App extends React.Component {
       isOpen: false,
       search: '',
     };
+  }
+
+  handleSearchChange(event) {
+    this.setState({ search: event.target.value });
+    console.log(this.state.search);
   }
 
   updateLocation(lat, lng) {
@@ -26,11 +32,11 @@ export default class App extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
+
   render() {
-    // const { lat, lng, updateLocation } = this.props;
-    // const { isOpen } = this.state;
     return (
       <Layout
+        handleSearchChange={this.handleSearchChange}
         updateLocation={this.updateLocation}
         toggleSidebar={this.toggleSidebar}
         {...this.state}

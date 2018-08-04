@@ -6,8 +6,10 @@ import locations from '../locations';
 
 
 const Sidebar = ({
+  handleSearchChange,
   updateLocation,
   toggleSidebar,
+  search,
 }) => (
   <div>
     <aside className={styles.sidebar}>
@@ -32,6 +34,8 @@ const Sidebar = ({
           className={styles.input}
           aria-label="Search"
           placeholder="Filter Locations"
+          value={search}
+          onChange={handleSearchChange}
         />
         <ul>
           {locations.map(location => (
@@ -54,8 +58,10 @@ const Sidebar = ({
 );
 
 Sidebar.propTypes = {
+  handleSearchChange: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
 };
 
 export default Sidebar;
