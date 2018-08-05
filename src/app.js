@@ -37,26 +37,29 @@ export default class App extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
+  // filteredLocations() {
+  //   return locations
+  //     .filter(location => location.name
+  //       .toLowerCase()
+  //       .includes(search));
+  // }
+
   render() {
-    // const filteredLocations = locations.filter(
-    //   (location) => {
-    //     return location.name.toLowerCase().indexOf(this.state.search) !== -1;
-    //   }
-    // );
     const { search } = this.state;
     const filteredLocations = locations
       .filter(location => location.name
         .toLowerCase()
-        .includes(search));
+        .includes(search.toLowerCase()));
+
 
     return (
       <Layout
         //  wtf is this shit
-        locations={filteredLocations}
         handleSearchChange={this.handleSearchChange}
         updateLocation={this.updateLocation}
         toggleSidebar={this.toggleSidebar}
         {...this.state}
+        locations={filteredLocations}
       />
     );
   }

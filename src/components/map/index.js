@@ -9,14 +9,19 @@ import {
   // InfoWindow,
 } from 'react-google-maps';
 import Loading from '../loading';
-import locations from '../../locations';
 
 
-const GMap = ({ lat, lng }) => (
+const GMap = ({
+  lat,
+  lng,
+  locations,
+  toggleSidebar,
+}) => (
   <GoogleMap
     defaultZoom={17}
     defaultCenter={{ lat, lng }}
     center={{ lat, lng }}
+    onClick={toggleSidebar}
   >
     {locations.map(location => (
       <Marker
@@ -45,6 +50,14 @@ const GMap = ({ lat, lng }) => (
 GMap.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
+  toggleSidebar: PropTypes.func.isRequired,
+  locations: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    }).isRequired,
+  })).isRequired,
 };
 
 

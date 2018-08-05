@@ -90,6 +90,7 @@
         outline: inherit;
       }
     }
+
     >nav ul {
       display: block;
       list-style: none;
@@ -114,6 +115,9 @@
         padding-right: 20px;
         font-size: 1.1rem;
         @media screen and (min-width: $break-small) {
+          height: 60px;
+        }
+        @media screen and (min-width: $break-medium) {
           height: 70px;
         }
         &:hover {
@@ -131,5 +135,12 @@
     .sidebar {
       left: -500%;
     }
+  }
+  .input {
+    border: 2px solid $cool-blue;
+    box-shadow: 10px 10px 77px -10px rgba(0, 0, 0, 0.62);
+    padding: 10px;
+    background: rgba(255,255,255, 0.5);
+    width: 100%
   }
 }

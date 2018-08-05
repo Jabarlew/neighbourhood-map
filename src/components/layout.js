@@ -39,7 +39,12 @@ const Layout = ({
     />
 
     <main>
-      <Map lat={lat} lng={lng} />
+      <Map
+        lat={lat}
+        lng={lng}
+        locations={locations}
+        toggleSidebar={toggleSidebar}
+      />
     </main>
   </div>
 );
