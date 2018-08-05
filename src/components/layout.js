@@ -16,6 +16,7 @@ const Layout = ({
   lat,
   lng,
   locations,
+  search,
 }) => (
   <div className={`${styles.container} ${isOpen ? null : styles.on}`}>
     <header className={styles.header}>
@@ -36,6 +37,7 @@ const Layout = ({
       updateLocation={updateLocation}
       toggleSidebar={toggleSidebar}
       locations={locations}
+      search={search}
     />
 
     <main>
@@ -57,6 +59,7 @@ Layout.propTypes = {
   handleSearchChange: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     position: PropTypes.shape({
