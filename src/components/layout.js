@@ -15,6 +15,7 @@ const Layout = ({
   isOpen,
   lat,
   lng,
+  locations,
 }) => (
   <div className={`${styles.container} ${isOpen ? null : styles.on}`}>
     <header className={styles.header}>
@@ -34,6 +35,7 @@ const Layout = ({
       handleSearchChange={handleSearchChange}
       updateLocation={updateLocation}
       toggleSidebar={toggleSidebar}
+      locations={locations}
     />
 
     <main>
@@ -50,7 +52,15 @@ Layout.propTypes = {
   handleSearchChange: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
+  locations: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    }).isRequired,
+  })).isRequired,
 };
+
 
 library.add(faTimes, faCoffee, faBars);
 export default Layout;

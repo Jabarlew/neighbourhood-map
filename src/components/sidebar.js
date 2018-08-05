@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './layout.scss';
-import locations from '../locations';
 
 
 const Sidebar = ({
@@ -10,6 +9,7 @@ const Sidebar = ({
   updateLocation,
   toggleSidebar,
   search,
+  locations,
 }) => (
   <div>
     <aside className={styles.sidebar}>
@@ -62,6 +62,13 @@ Sidebar.propTypes = {
   updateLocation: PropTypes.func.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
+  locations: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    }).isRequired,
+  })).isRequired,
 };
 
 export default Sidebar;

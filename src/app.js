@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from './components/layout';
+import locations from './locations';
 
 export default class App extends React.Component {
   constructor(...args) {
@@ -18,6 +19,11 @@ export default class App extends React.Component {
     };
   }
 
+  // filteredPlaces()  {
+  //   let name = location.name;
+
+  // }
+
   handleSearchChange(event) {
     this.setState({ search: event.target.value });
   }
@@ -31,10 +37,22 @@ export default class App extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
-
   render() {
+    // const filteredLocations = locations.filter(
+    //   (location) => {
+    //     return location.name.toLowerCase().indexOf(this.state.search) !== -1;
+    //   }
+    // );
+    const { search } = this.state;
+    const filteredLocations = locations
+      .filter(location => location.name
+        .toLowerCase()
+        .includes(search));
+
     return (
       <Layout
+        //  wtf is this shit
+        locations={filteredLocations}
         handleSearchChange={this.handleSearchChange}
         updateLocation={this.updateLocation}
         toggleSidebar={this.toggleSidebar}
