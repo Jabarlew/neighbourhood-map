@@ -42,14 +42,24 @@ export default class App extends React.Component {
       const url = `https://api.foursquare.com/v2/venues/${location.venueId}/tips?&client_id=${clientId}&client_secret=${clientSecret}&v=20180725`;
       // const url = `https://api.foursquare.com/v2/venues/search?ll=${location.position.lat},${location.position.lng}&oauth_token=${clientId}&v=${clientSecret}`;
 
-      fetch(url)
-      .then((response) => {
-        response.json()
-        .then((data) => {
-          let tip
-        })
+      // fetch(url)
+      // .then((response) => {
+      //   response.json()
+      //   .then((data) => {
+      //     let tip
+      //     if (i get fucking data ) {
 
-      })
+      //     } else {
+
+      //     }
+      //   })
+      // })
+      // omg use this not ^
+      fetch(url)
+        .then(response => response.json())
+        .then((data) => {
+
+        });
     }
   });
 
