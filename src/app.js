@@ -16,13 +16,9 @@ export default class App extends React.Component {
       lng: 14.55062,
       isOpen: false,
       search: '',
+      tips:[],
     };
   }
-
-  // filteredPlaces()  {
-  //   let name = location.name;
-
-  // }
 
   handleSearchChange(event) {
     this.setState({ search: event.target.value });
@@ -37,12 +33,25 @@ export default class App extends React.Component {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }));
   }
 
-  // filteredLocations() {
-  //   return locations
-  //     .filter(location => location.name
-  //       .toLowerCase()
-  //       .includes(search));
-  // }
+  loadFoursquare() {
+
+    locations.map((location) => {
+
+      const clientId = 'GUEEPUM3XETDN2NNCGSXNK5CJWM1VSNRG4DLTW4OIBUHWS20';
+      const clientSecret = 'U1NF0B1SIAPJEQFNY4F1FFFQUU5TOL1IJXDWLJ51MK155AGL';
+      const url = `https://api.foursquare.com/v2/venues/${location.venueId}/tips?&client_id=${clientId}&client_secret=${clientSecret}&v=20180725`;
+      // const url = `https://api.foursquare.com/v2/venues/search?ll=${location.position.lat},${location.position.lng}&oauth_token=${clientId}&v=${clientSecret}`;
+
+      fetch(url)
+      .then((response) => {
+        response.json()
+        .then((data) => {
+          let tip
+        })
+
+      })
+    }
+  });
 
   render() {
     const { search } = this.state;

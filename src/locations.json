@@ -1,22 +1,27 @@
 [
   {
     "name": "Burger King",
-    "position": {"lat": 52.33697552, "lng": 14.54754263}
+    "position": {"lat": 52.33697552, "lng": 14.54754263},
+    "venueId": "4f3e7cc9e4b00c683d5ab790"
   },
   {
     "name": "McDonld's Restaurant",
-    "position": {"lat": 52.3474299, "lng": 14.5507479}
+    "position": {"lat": 52.3474299, "lng": 14.5507479},
+    "venueId": "4b881d6af964a520d7e031e3"
   },
   {
-    "name": "Cafe Panorama",
-    "position": {"lat": 52.3487763, "lng": 14.5535274}
+    "name": "Burgerbüro by Redo",
+    "position": {"lat": 52.343791, "lng": 14.552908},
+    "venueId": "54f30e7e498ef860b7624276"
   },
   {
     "name": "Café Am Kleistpark",
-    "position": {"lat": 52.3432953, "lng": 14.541147}
+    "position": {"lat": 52.3432953, "lng": 14.541147},
+    "venueId": "4d57dade36d1721ebedaefb1"
   },
   {
     "name": "Restaurant Wintergarten",
-    "position": {"lat": 52.3255831, "lng": 14.5497863}
+    "position": {"lat": 52.3255831, "lng": 14.5497863},
+    "venueId": "4adcda78f964a5205c4621e3"
   }
 ]
