@@ -6,9 +6,9 @@ import {
   withScriptjs,
   GoogleMap,
 } from 'react-google-maps';
+import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithLabel';
 import Loading from '../loading';
-
-const { MarkerWithLabel } = require('react-google-maps/lib/components/addons/MarkerWithLabel');
+import Location from './location';
 
 const GMap = ({
   lat,
@@ -23,22 +23,8 @@ const GMap = ({
     onClick={toggleSidebar}
   >
     {locations.map(location => (
-      <MarkerWithLabel
-        key={location.name}
-        position={
-          location.position
-        }
-        labelAnchor={new google.maps.Point(0, 0)}
-        labelStyle={{ backgroundColor: '#EBEEF2', fontSize: '32px', padding: '16px' }}
-        animation={google.maps.Animation.DROP}
-      >
-        <div>
-          Hello There!
-        </div>
-      </MarkerWithLabel>
-
+      <Location key={location.name} {...location} />
     ))}
-
   </GoogleMap>
 );
 

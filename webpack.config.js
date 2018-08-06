@@ -6,6 +6,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 
 
 const dir = {
@@ -95,6 +96,11 @@ module.exports = {
       inject: true,
       template: path.join(dir.src, 'template.html'),
       minify: { collapseWhitespace: true },
+    }),
+    // Service Workers
+    new SWPrecacheWebpackPlugin({
+      cacheId: 'bartmap',
+      filename: 'service-worker.js',
     }),
   ],
 
