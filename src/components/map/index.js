@@ -5,10 +5,10 @@ import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker,
 } from 'react-google-maps';
 import Loading from '../loading';
 
+const { MarkerWithLabel } = require('react-google-maps/lib/components/addons/MarkerWithLabel');
 
 const GMap = ({
   lat,
@@ -23,24 +23,19 @@ const GMap = ({
     onClick={toggleSidebar}
   >
     {locations.map(location => (
-      <Marker
+      <MarkerWithLabel
         key={location.name}
         position={
           location.position
         }
-      />
-      // <MarkerWithLabel
-      //   key={location.name}
-      //   position={
-      //     location.position
-      //   }
-      //   labelAnchor={new google.maps.Point(0, 0)}
-      //   labelStyle={{ backgroundColor: 'yellow', fontSize: '32px', padding: '16px' }}
-      // >
-      //   <div>
-      //     {location.name}
-      //   </div>
-      // </MarkerWithLabel>
+        labelAnchor={new google.maps.Point(0, 0)}
+        labelStyle={{ backgroundColor: '#EBEEF2', fontSize: '32px', padding: '16px' }}
+      >
+        <div>
+          Hello There!
+        </div>
+      </MarkerWithLabel>
+
     ))}
 
   </GoogleMap>
