@@ -6,7 +6,6 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
-  // InfoWindow,
 } from 'react-google-maps';
 import Loading from '../loading';
 

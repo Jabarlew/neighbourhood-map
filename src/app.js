@@ -10,13 +10,14 @@ export default class App extends React.Component {
     this.updateLocation = this.updateLocation.bind(this);
     this.toggleSidebar = this.toggleSidebar.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.loadFoursquare = this.loadFoursquare.bind(this);
 
     this.state = {
       lat: 52.34714,
       lng: 14.55062,
       isOpen: false,
       search: '',
-      tips:[],
+      tips: [],
     };
   }
 
@@ -34,34 +35,19 @@ export default class App extends React.Component {
   }
 
   loadFoursquare() {
-
     locations.map((location) => {
-
       const clientId = 'GUEEPUM3XETDN2NNCGSXNK5CJWM1VSNRG4DLTW4OIBUHWS20';
       const clientSecret = 'U1NF0B1SIAPJEQFNY4F1FFFQUU5TOL1IJXDWLJ51MK155AGL';
       const url = `https://api.foursquare.com/v2/venues/${location.venueId}/tips?&client_id=${clientId}&client_secret=${clientSecret}&v=20180725`;
-      // const url = `https://api.foursquare.com/v2/venues/search?ll=${location.position.lat},${location.position.lng}&oauth_token=${clientId}&v=${clientSecret}`;
 
-      // fetch(url)
-      // .then((response) => {
-      //   response.json()
-      //   .then((data) => {
-      //     let tip
-      //     if (i get fucking data ) {
-
-      //     } else {
-
-      //     }
-      //   })
-      // })
-      // omg use this not ^
-      fetch(url)
-        .then(response => response.json())
-        .then((data) => {
-
+      fetch(url).then((res) => {
+        res.json().then((resp) => {
+          console.log(resp.tip);
+          this.setState({ tips: resp.tip });
         });
-    }
-  });
+      });
+    });
+  }
 
   render() {
     const { search } = this.state;
@@ -77,6 +63,7 @@ export default class App extends React.Component {
         handleSearchChange={this.handleSearchChange}
         updateLocation={this.updateLocation}
         toggleSidebar={this.toggleSidebar}
+        loadFoursquare={this.loadFoursquare}
         {...this.state}
         locations={filteredLocations}
       />
