@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     strict: ['error', 'global'],
   },
+  globals: { google: false },
   overrides: [
     {
       files: ['src/**/*.js'],

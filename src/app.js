@@ -13,11 +13,9 @@ export default class App extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
 
     this.state = {
-      lat: 52.34714,
-      lng: 14.55062,
+      selectedVenuId: locations[0].venueId,
       isOpen: false,
       search: '',
-      locations,
     };
   }
 
@@ -25,9 +23,9 @@ export default class App extends React.Component {
     this.setState({ search: event.target.value });
   }
 
-  updateLocation(lat, lng) {
+  updateLocation(selectedVenuId) {
     // important thats how i change state
-    this.setState({ lat, lng });
+    this.setState({ selectedVenuId });
   }
 
   toggleSidebar() {

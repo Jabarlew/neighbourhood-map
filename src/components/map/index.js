@@ -10,27 +10,30 @@ import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithL
 import Loading from '../loading';
 import Location from './location';
 
-const GMap = ({
-  lat,
-  lng,
-  locations,
-  toggleSidebar,
-}) => (
-  <GoogleMap
-    defaultZoom={17}
-    defaultCenter={{ lat, lng }}
-    center={{ lat, lng }}
-    onClick={toggleSidebar}
-  >
-    {locations.map(location => (
-      <Location key={location.name} {...location} />
-    ))}
-  </GoogleMap>
-);
+const GMap = ({ selectedVenuId locations, toggleSidebar }) => {
+  const position = locations
+    .find(location => location.venueId === selectedVenuId);
+
+  return (
+    <GoogleMap
+      defaultZoom={17}
+      defaultCenter={position}
+      center={position}
+      onClick={toggleSidebar}
+    >
+      {locations.map(location => (
+        <Location
+          key={location.name}
+          isSelected={selectedVenuId === location.venueId}
+          {...location}
+        />
+      ))}
+    </GoogleMap>
+  );
+};
 
 GMap.propTypes = {
-  lat: PropTypes.number.isRequired,
-  lng: PropTypes.number.isRequired,
+  selectedVenuId: PropTypes.string.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,

@@ -13,8 +13,7 @@ const Layout = ({
   updateLocation,
   toggleSidebar,
   isOpen,
-  lat,
-  lng,
+  selectedVenuId
   locations,
   search,
 }) => (
@@ -33,6 +32,7 @@ const Layout = ({
     </header>
 
     <Sidebar
+      selectedVenuId={selectedVenuId}
       handleSearchChange={handleSearchChange}
       updateLocation={updateLocation}
       toggleSidebar={toggleSidebar}
@@ -42,8 +42,7 @@ const Layout = ({
 
     <main>
       <Map
-        lat={lat}
-        lng={lng}
+        selectedVenuId={selectedVenuId}
         locations={locations}
         toggleSidebar={toggleSidebar}
       />
@@ -53,8 +52,7 @@ const Layout = ({
 
 
 Layout.propTypes = {
-  lat: PropTypes.number.isRequired,
-  lng: PropTypes.number.isRequired,
+  selectedVenuId: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   handleSearchChange: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,

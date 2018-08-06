@@ -14,6 +14,7 @@ const labelStyles = {
 
 export default class MapLocation extends React.Component {
   static propTypes = {
+    isSelected: PropTypes.bool.isRequired,
     venueId: PropTypes.string.isRequired,
     labelText: PropTypes.string,
     position: PropTypes.shape({
@@ -45,14 +46,14 @@ export default class MapLocation extends React.Component {
 
   render() {
     const { labelText } = this.state;
-    const { position } = this.props;
+    const { isSelected, position } = this.props;
 
     return (
       <MarkerWithLabel
         position={position}
         labelAnchor={this.labelAnchor}
         labelStyle={labelStyles}
-        animation={google.maps.Animation.BOUNCE}
+        animation={isSelected ? google.maps.Animation.BOUNCE : null}
       >
         <div>
           {labelText}
