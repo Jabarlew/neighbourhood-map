@@ -13,7 +13,7 @@ const Layout = ({
   updateLocation,
   toggleSidebar,
   isOpen,
-  selectedVenuId
+  selectedVenuId,
   locations,
   search,
 }) => (

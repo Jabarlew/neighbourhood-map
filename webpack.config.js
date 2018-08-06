@@ -22,7 +22,7 @@ const styleBundle = new ExtractTextWebpackPlugin({
 
 module.exports = {
   mode: 'development',
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
 
   // Input source files -> Output distribution files
   context: dir.src,
@@ -98,10 +98,10 @@ module.exports = {
       minify: { collapseWhitespace: true },
     }),
     // Service Workers
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'bartmap',
-      filename: 'service-worker.js',
-    }),
+    // new SWPrecacheWebpackPlugin({
+    //   cacheId: 'bartmap',
+    //   filename: 'service-worker.js',
+    // }),
   ],
 
   // HTTP server configuration

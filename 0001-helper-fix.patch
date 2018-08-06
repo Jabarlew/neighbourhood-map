@@ -1,0 +1,289 @@
+From 18a15884aed1c1a81d9dee2a2201582e5bae2f08 Mon Sep 17 00:00:00 2001
+From: Matthew Palmer <matthew@compass.digital.io>
+Date: Mon, 6 Aug 2018 15:42:57 -0400
+Subject: [PATCH] helper fix
+
+---
+ .eslintrc.js                   |   1 +
+ 0001-almost-done.patch         | 182 +++++++++++++++++++++++++++++++++++++++++
+ src/app.js                     |   1 -
+ src/components/layout.js       |   2 +-
+ src/components/map/index.js    |   5 +-
+ src/components/map/location.js |   2 +-
+ webpack.config.js              |   2 +-
+ 7 files changed, 188 insertions(+), 7 deletions(-)
+ create mode 100644 0001-almost-done.patch
+
+diff --git a/.eslintrc.js b/.eslintrc.js
+index af00af7..e20245b 100644
+--- a/.eslintrc.js
++++ b/.eslintrc.js
+@@ -22,6 +22,7 @@ module.exports = {
+       rules: {
+         'import/prefer-default-export': 0,
+         'react/jsx-filename-extension': 0,
++        'react/destructuring-assignment': 0,
+       },
+     },
+   ],
+diff --git a/0001-almost-done.patch b/0001-almost-done.patch
+new file mode 100644
+index 0000000..b682265
+--- /dev/null
++++ b/0001-almost-done.patch
+@@ -0,0 +1,182 @@
++From 2fdd89a6f256f76f6ffa2b357dbcf93d70b06ec0 Mon Sep 17 00:00:00 2001
++From: Jabarlew <barlewdesign@gmail.com>
++Date: Mon, 6 Aug 2018 21:29:05 +0200
++Subject: [PATCH] almost done
++
++---
++ .eslintrc.js                   |  1 +
++ src/app.js                     |  8 +++-----
++ src/components/layout.js       | 10 ++++------
++ src/components/map/index.js    | 41 ++++++++++++++++++++++-------------------
++ src/components/map/location.js |  5 +++--
++ 5 files changed, 33 insertions(+), 32 deletions(-)
++
++diff --git a/.eslintrc.js b/.eslintrc.js
++index e4565fd..af00af7 100644
++--- a/.eslintrc.js
+++++ b/.eslintrc.js
++@@ -8,6 +8,7 @@ module.exports = {
++   rules: {
++     strict: ['error', 'global'],
++   },
+++  globals: { google: false },
++   overrides: [
++     {
++       files: ['src/**/*.js'],
++diff --git a/src/app.js b/src/app.js
++index 4e57476..1157db8 100644
++--- a/src/app.js
+++++ b/src/app.js
++@@ -13,11 +13,9 @@ export default class App extends React.Component {
++     this.handleSearchChange = this.handleSearchChange.bind(this);
++ 
++     this.state = {
++-      lat: 52.34714,
++-      lng: 14.55062,
+++      selectedVenuId: locations[0].venueId,
++       isOpen: false,
++       search: '',
++-      locations,
++     };
++   }
++ 
++@@ -25,9 +23,9 @@ export default class App extends React.Component {
++     this.setState({ search: event.target.value });
++   }
++ 
++-  updateLocation(lat, lng) {
+++  updateLocation(selectedVenuId) {
++     // important thats how i change state
++-    this.setState({ lat, lng });
+++    this.setState({ selectedVenuId });
++   }
++ 
++   toggleSidebar() {
++diff --git a/src/components/layout.js b/src/components/layout.js
++index 0237aa5..bc442ad 100644
++--- a/src/components/layout.js
+++++ b/src/components/layout.js
++@@ -13,8 +13,7 @@ const Layout = ({
++   updateLocation,
++   toggleSidebar,
++   isOpen,
++-  lat,
++-  lng,
+++  selectedVenuId
++   locations,
++   search,
++ }) => (
++@@ -33,6 +32,7 @@ const Layout = ({
++     </header>
++ 
++     <Sidebar
+++      selectedVenuId={selectedVenuId}
++       handleSearchChange={handleSearchChange}
++       updateLocation={updateLocation}
++       toggleSidebar={toggleSidebar}
++@@ -42,8 +42,7 @@ const Layout = ({
++ 
++     <main>
++       <Map
++-        lat={lat}
++-        lng={lng}
+++        selectedVenuId={selectedVenuId}
++         locations={locations}
++         toggleSidebar={toggleSidebar}
++       />
++@@ -53,8 +52,7 @@ const Layout = ({
++ 
++ 
++ Layout.propTypes = {
++-  lat: PropTypes.number.isRequired,
++-  lng: PropTypes.number.isRequired,
+++  selectedVenuId: PropTypes.string.isRequired,
++   isOpen: PropTypes.bool.isRequired,
++   handleSearchChange: PropTypes.func.isRequired,
++   updateLocation: PropTypes.func.isRequired,
++diff --git a/src/components/map/index.js b/src/components/map/index.js
++index 2e1c5d1..cc3218d 100644
++--- a/src/components/map/index.js
+++++ b/src/components/map/index.js
++@@ -10,27 +10,30 @@ import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithL
++ import Loading from '../loading';
++ import Location from './location';
++ 
++-const GMap = ({
++-  lat,
++-  lng,
++-  locations,
++-  toggleSidebar,
++-}) => (
++-  <GoogleMap
++-    defaultZoom={17}
++-    defaultCenter={{ lat, lng }}
++-    center={{ lat, lng }}
++-    onClick={toggleSidebar}
++-  >
++-    {locations.map(location => (
++-      <Location key={location.name} {...location} />
++-    ))}
++-  </GoogleMap>
++-);
+++const GMap = ({ selectedVenuId locations, toggleSidebar }) => {
+++  const position = locations
+++    .find(location => location.venueId === selectedVenuId);
+++
+++  return (
+++    <GoogleMap
+++      defaultZoom={17}
+++      defaultCenter={position}
+++      center={position}
+++      onClick={toggleSidebar}
+++    >
+++      {locations.map(location => (
+++        <Location
+++          key={location.name}
+++          isSelected={selectedVenuId === location.venueId}
+++          {...location}
+++        />
+++      ))}
+++    </GoogleMap>
+++  );
+++};
++ 
++ GMap.propTypes = {
++-  lat: PropTypes.number.isRequired,
++-  lng: PropTypes.number.isRequired,
+++  selectedVenuId: PropTypes.string.isRequired,
++   toggleSidebar: PropTypes.func.isRequired,
++   locations: PropTypes.arrayOf(PropTypes.shape({
++     name: PropTypes.string.isRequired,
++diff --git a/src/components/map/location.js b/src/components/map/location.js
++index 7e14bfe..29ebc2f 100644
++--- a/src/components/map/location.js
+++++ b/src/components/map/location.js
++@@ -14,6 +14,7 @@ const labelStyles = {
++ 
++ export default class MapLocation extends React.Component {
++   static propTypes = {
+++    isSelected: PropTypes.bool.isRequired,
++     venueId: PropTypes.string.isRequired,
++     labelText: PropTypes.string,
++     position: PropTypes.shape({
++@@ -45,14 +46,14 @@ export default class MapLocation extends React.Component {
++ 
++   render() {
++     const { labelText } = this.state;
++-    const { position } = this.props;
+++    const { isSelected, position } = this.props;
++ 
++     return (
++       <MarkerWithLabel
++         position={position}
++         labelAnchor={this.labelAnchor}
++         labelStyle={labelStyles}
++-        animation={google.maps.Animation.BOUNCE}
+++        animation={isSelected ? google.maps.Animation.BOUNCE : null}
++       >
++         <div>
++           {labelText}
++-- 
++2.15.2 (Apple Git-101.1)
++
+diff --git a/src/app.js b/src/app.js
+index 1157db8..8698ee9 100644
+--- a/src/app.js
++++ b/src/app.js
+@@ -1,7 +1,6 @@
+ import React from 'react';
+ import Layout from './components/layout';
+ import locations from './locations';
+-import { getLocation } from './foursquare-api';
+ 
+ export default class App extends React.Component {
+   constructor(...args) {
+diff --git a/src/components/layout.js b/src/components/layout.js
+index bc442ad..1890f37 100644
+--- a/src/components/layout.js
++++ b/src/components/layout.js
+@@ -13,7 +13,7 @@ const Layout = ({
+   updateLocation,
+   toggleSidebar,
+   isOpen,
+-  selectedVenuId
++  selectedVenuId,
+   locations,
+   search,
+ }) => (
+diff --git a/src/components/map/index.js b/src/components/map/index.js
+index cc3218d..fd7f984 100644
+--- a/src/components/map/index.js
++++ b/src/components/map/index.js
+@@ -6,12 +6,11 @@ import {
+   withScriptjs,
+   GoogleMap,
+ } from 'react-google-maps';
+-import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithLabel';
+ import Loading from '../loading';
+ import Location from './location';
+ 
+-const GMap = ({ selectedVenuId locations, toggleSidebar }) => {
+-  const position = locations
++const GMap = ({ selectedVenuId, locations, toggleSidebar }) => {
++  const { position } = locations
+     .find(location => location.venueId === selectedVenuId);
+ 
+   return (
+diff --git a/src/components/map/location.js b/src/components/map/location.js
+index 29ebc2f..fcd9a3e 100644
+--- a/src/components/map/location.js
++++ b/src/components/map/location.js
+@@ -39,7 +39,7 @@ export default class MapLocation extends React.Component {
+       })
+       .catch((error) => {
+         console.error(error);
+-        this.setState({ labelText: 'No data' })
++        this.setState({ labelText: 'No data' });
+         throw error;
+       });
+   }
+diff --git a/webpack.config.js b/webpack.config.js
+index b24857c..dd563eb 100644
+--- a/webpack.config.js
++++ b/webpack.config.js
+@@ -22,7 +22,7 @@ const styleBundle = new ExtractTextWebpackPlugin({
+ 
+ module.exports = {
+   mode: 'development',
+-  devtool: 'eval-source-map',
++  devtool: 'source-map',
+ 
+   // Input source files -> Output distribution files
+   context: dir.src,
+-- 
+2.15.2 (Apple Git-101.1)
+

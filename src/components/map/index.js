@@ -10,8 +10,8 @@ import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithL
 import Loading from '../loading';
 import Location from './location';
 
-const GMap = ({ selectedVenuId locations, toggleSidebar }) => {
-  const position = locations
+const GMap = ({ selectedVenuId, locations, toggleSidebar }) => {
+  const { position } = locations
     .find(location => location.venueId === selectedVenuId);
 
   return (
