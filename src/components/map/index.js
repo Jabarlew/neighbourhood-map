@@ -30,6 +30,7 @@ const GMap = ({
         }
         labelAnchor={new google.maps.Point(0, 0)}
         labelStyle={{ backgroundColor: '#EBEEF2', fontSize: '32px', padding: '16px' }}
+        animation={google.maps.Animation.DROP}
       >
         <div>
           Hello There!
