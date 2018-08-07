@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CaseSensitivePathsWebpackPlugin = require('case-sensitive-paths-webpack-plugin');
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 
 
 const dir = {
@@ -98,10 +98,7 @@ module.exports = {
       minify: { collapseWhitespace: true },
     }),
     // Service Workers
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'bartmap',
-      filename: 'service-worker.js',
-    }),
+    new OfflinePlugin(),
   ],
 
   // HTTP server configuration

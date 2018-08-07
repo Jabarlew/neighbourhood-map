@@ -13,7 +13,6 @@ const GMap = ({
   lat,
   lng,
   locations,
-  toggleSidebar,
   updateLocation,
 }) => (
   <GoogleMap
@@ -34,7 +33,6 @@ const GMap = ({
 GMap.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
-  toggleSidebar: PropTypes.func.isRequired,
   updateLocation: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,

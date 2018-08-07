@@ -51,7 +51,6 @@ export default class App extends React.Component {
         ...location,
         isActive: selectedVenueId === location.venueId,
       }));
-    console.log(filteredLocations);
 
 
     return (
