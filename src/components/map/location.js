@@ -6,14 +6,16 @@ import { getLocation } from '../../foursquare-api';
 
 
 const labelStyles = {
+  width: '150px',
   backgroundColor: '#EBEEF2',
-  fontSize: '12px',
+  fontSize: '14px',
   padding: '16px',
 };
 
 
 export default class MapLocation extends React.Component {
   static propTypes = {
+    isSelected: PropTypes.bool.isRequired,
     venueId: PropTypes.string.isRequired,
     labelText: PropTypes.string,
     position: PropTypes.shape({
@@ -38,21 +40,21 @@ export default class MapLocation extends React.Component {
       })
       .catch((error) => {
         console.error(error);
-        this.setState({ labelText: 'No data' })
+        this.setState({ labelText: 'unable to load data' });
         throw error;
       });
   }
 
   render() {
     const { labelText } = this.state;
-    const { position } = this.props;
+    const { isSelected, position } = this.props;
 
     return (
       <MarkerWithLabel
         position={position}
         labelAnchor={this.labelAnchor}
         labelStyle={labelStyles}
-        animation={google.maps.Animation.BOUNCE}
+        animation={isSelected ? google.maps.Animation.BOUNCE : null}
       >
         <div>
           {labelText}
