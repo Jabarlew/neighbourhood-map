@@ -20,7 +20,6 @@ const GMap = ({
     defaultZoom={17}
     defaultCenter={{ lat, lng }}
     center={{ lat, lng }}
-    onClick={toggleSidebar}
   >
     {locations.map(location => (
       <Location

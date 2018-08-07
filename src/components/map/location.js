@@ -64,6 +64,7 @@ export default class MapLocation extends React.Component {
         position={position}
         labelAnchor={this.labelAnchor}
         labelStyle={labelStyles}
+        labelVisible={isActive}
         animation={isActive ? google.maps.Animation.BOUNCE : null}
         onClick={() => updateLocation(venueId)}
       >
