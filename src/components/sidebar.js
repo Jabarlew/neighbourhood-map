@@ -42,7 +42,7 @@ const Sidebar = ({
             <li key={location.name}>
               <button
                 type="button"
-                onClick={() => updateLocation(location.position.lat, location.position.lng, location.venueId)}
+                onClick={() => updateLocation(location.venueId)}
               >
                 <FontAwesomeIcon className={styles.coffeeIcon} icon="coffee" />
                 {location.name}

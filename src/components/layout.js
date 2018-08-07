@@ -46,6 +46,7 @@ const Layout = ({
         lng={lng}
         locations={locations}
         toggleSidebar={toggleSidebar}
+        updateLocation={updateLocation}
       />
     </main>
   </div>

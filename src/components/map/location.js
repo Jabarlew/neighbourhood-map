@@ -16,12 +16,14 @@ const labelStyles = {
 
 export default class MapLocation extends React.Component {
   static propTypes = {
+    isActive: PropTypes.bool.isRequired,
     venueId: PropTypes.string.isRequired,
     labelText: PropTypes.string,
     position: PropTypes.shape({
       lat: PropTypes.number.isRequired,
       lng: PropTypes.number.isRequired,
     }).isRequired,
+    updateLocation: PropTypes.func.isRequired,
   };
 
   static defaultProps = { labelText: null };
@@ -50,15 +52,20 @@ export default class MapLocation extends React.Component {
 
   render() {
     const { labelText } = this.state;
-    const { position } = this.props;
+    const {
+      position,
+      isActive,
+      venueId,
+      updateLocation,
+    } = this.props;
 
     return (
       <MarkerWithLabel
         position={position}
         labelAnchor={this.labelAnchor}
         labelStyle={labelStyles}
-
-        animation={google.maps.Animation.BOUNCE}
+        animation={isActive ? google.maps.Animation.BOUNCE : null}
+        onClick={() => updateLocation(venueId)}
       >
         <div>
           {labelText}

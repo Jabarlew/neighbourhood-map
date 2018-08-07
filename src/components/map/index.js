@@ -14,6 +14,7 @@ const GMap = ({
   lng,
   locations,
   toggleSidebar,
+  updateLocation,
 }) => (
   <GoogleMap
     defaultZoom={17}
@@ -22,7 +23,11 @@ const GMap = ({
     onClick={toggleSidebar}
   >
     {locations.map(location => (
-      <Location key={location.name} {...location} />
+      <Location
+        key={location.name}
+        {...location}
+        updateLocation={updateLocation}
+      />
     ))}
   </GoogleMap>
 );
@@ -31,6 +36,7 @@ GMap.propTypes = {
   lat: PropTypes.number.isRequired,
   lng: PropTypes.number.isRequired,
   toggleSidebar: PropTypes.func.isRequired,
+  updateLocation: PropTypes.func.isRequired,
   locations: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     position: PropTypes.shape({

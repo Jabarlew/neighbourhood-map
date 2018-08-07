@@ -24,9 +24,16 @@ export default class App extends React.Component {
     this.setState({ search: event.target.value });
   }
 
-  updateLocation(lat, lng, selectedVenueId) {
+  updateLocation(selectedVenueId) {
+    const selectedLocation = locations
+      .find(location => selectedVenueId === location.venueId);
+
     // important thats how i change state
-    this.setState({ lat, lng, selectedVenueId });
+    this.setState({
+      selectedVenueId,
+      lat: selectedLocation.position.lat,
+      lng: selectedLocation.position.lng,
+    });
   }
 
   toggleSidebar() {
@@ -34,13 +41,17 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.selectedVenueId);
     const { search, selectedVenueId } = this.state;
 
     const filteredLocations = locations
       .filter(location => location.name
         .toLowerCase()
-        .includes(search.toLowerCase()));
+        .includes(search.toLowerCase()))
+      .map(location => ({
+        ...location,
+        isActive: selectedVenueId === location.venueId,
+      }));
+    console.log(filteredLocations);
 
 
     return (
