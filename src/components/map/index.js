@@ -6,7 +6,6 @@ import {
   withScriptjs,
   GoogleMap,
 } from 'react-google-maps';
-import MarkerWithLabel from 'react-google-maps/lib/components/addons/MarkerWithLabel';
 import Loading from '../loading';
 import Location from './location';
 

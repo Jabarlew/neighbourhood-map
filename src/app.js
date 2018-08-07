@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from './components/layout';
 import locations from './locations';
-import { getLocation } from './foursquare-api';
 
 export default class App extends React.Component {
   constructor(...args) {
@@ -17,7 +16,7 @@ export default class App extends React.Component {
       lng: 14.55062,
       isOpen: false,
       search: '',
-      locations,
+      selectedVenueId: null,
     };
   }
 
@@ -25,9 +24,9 @@ export default class App extends React.Component {
     this.setState({ search: event.target.value });
   }
 
-  updateLocation(lat, lng) {
+  updateLocation(lat, lng, selectedVenueId) {
     // important thats how i change state
-    this.setState({ lat, lng });
+    this.setState({ lat, lng, selectedVenueId });
   }
 
   toggleSidebar() {
@@ -35,7 +34,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { search } = this.state;
+    console.log(this.state.selectedVenueId);
+    const { search, selectedVenueId } = this.state;
+
     const filteredLocations = locations
       .filter(location => location.name
         .toLowerCase()

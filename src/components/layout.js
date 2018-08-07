@@ -66,6 +66,7 @@ Layout.propTypes = {
       lat: PropTypes.number.isRequired,
       lng: PropTypes.number.isRequired,
     }).isRequired,
+    venueId: PropTypes.string.isRequired,
   })).isRequired,
 };
 

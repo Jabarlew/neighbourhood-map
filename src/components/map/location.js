@@ -9,6 +9,8 @@ const labelStyles = {
   backgroundColor: '#EBEEF2',
   fontSize: '12px',
   padding: '16px',
+  width: '200px',
+  borderRadius: '10px',
 };
 
 
@@ -27,18 +29,21 @@ export default class MapLocation extends React.Component {
   constructor(...args) {
     super(...args);
     this.labelAnchor = new google.maps.Point(0, 0);
-
-    this.state = { labelText: this.props.labelText };
+    const { labelText } = this.props;
+    this.state = {
+      labelText,
+    };
   }
 
   componentDidMount() {
-    getLocation(this.props.venueId)
+    const { venueId } = this.props;
+    getLocation(venueId)
       .then(({ text }) => {
         this.setState({ labelText: text });
       })
       .catch((error) => {
         console.error(error);
-        this.setState({ labelText: 'No data' })
+        this.setState({ labelText: 'No data' });
         throw error;
       });
   }
@@ -52,10 +57,16 @@ export default class MapLocation extends React.Component {
         position={position}
         labelAnchor={this.labelAnchor}
         labelStyle={labelStyles}
+
         animation={google.maps.Animation.BOUNCE}
       >
         <div>
           {labelText}
+          <br />
+          powered by
+          <a href="https://foursquare.com/">
+            Foursquare
+          </a>
         </div>
       </MarkerWithLabel>
     );

@@ -5,6 +5,9 @@ module.exports = {
   extends: 'airbnb',
   parserOptions: { sourceType: 'script' },
   env: { es6: true },
+  globals: {
+    google: false,
+  },
   rules: {
     strict: ['error', 'global'],
   },
