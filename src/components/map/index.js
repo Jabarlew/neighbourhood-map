@@ -8,7 +8,7 @@ import {
 } from 'react-google-maps';
 import Loading from '../loading';
 import Location from './location';
-
+//made using instructions from component site
 const GMap = ({
   lat,
   lng,

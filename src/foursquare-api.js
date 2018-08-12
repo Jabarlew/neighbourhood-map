@@ -1,7 +1,7 @@
 function addClientTokens(url) {
-  url.searchParams.set('client_id', 'VMPYSRCSWKMQZ0A4NG4KEO55EEFW0ERS4JY3OQX4MHDBT4T5');
-  url.searchParams.set('client_secret', 'DZT1UCZNDCOJW4XJJV5UGEQ4U44ZKTYMJGYD3HXAZFG0022Y');
-  url.searchParams.set('v', '20180323');
+  url.searchParams.set('client_id', 'NWVFW0FB23Z0GOQT3CSVDCXMWTN2JXORM2POAEB2TCYJX5DJ');
+  url.searchParams.set('client_secret', 'CI1FY1HX2P2VKFSHQAKJKABRRFEBQATNTEX0RD5PP0FHQJ31');
+  url.searchParams.set('v', '20180810');
 
   return url;
 }

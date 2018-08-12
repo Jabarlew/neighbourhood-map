@@ -41,12 +41,13 @@ export default class App extends React.Component {
   }
 
   render() {
+    // destructing
     const { search, selectedVenueId } = this.state;
-
+    //created simple filter
     const filteredLocations = locations
       .filter(location => location.name
         .toLowerCase()
-        .includes(search.toLowerCase()))
+        .includes(search.toLowerCase())) //to prevent errors on capital letters
       .map(location => ({
         ...location,
         isActive: selectedVenueId === location.venueId,
@@ -55,7 +56,7 @@ export default class App extends React.Component {
 
     return (
       <Layout
-        //  wtf is this shit
+        //  passing to layout
         handleSearchChange={this.handleSearchChange}
         updateLocation={this.updateLocation}
         toggleSidebar={this.toggleSidebar}

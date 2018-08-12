@@ -72,7 +72,7 @@ export default class MapLocation extends React.Component {
           {labelText}
           <br />
           powered by
-          <a href="https://foursquare.com/">
+          <a tabIndex="-1" href="https://foursquare.com/">
             Foursquare
           </a>
         </div>
