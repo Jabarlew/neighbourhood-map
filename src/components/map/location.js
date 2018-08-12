@@ -68,7 +68,7 @@ export default class MapLocation extends React.Component {
         animation={isActive ? google.maps.Animation.BOUNCE : null}
         onClick={() => updateLocation(venueId)}
       >
-        <div>
+        <div tabIndex="-1">
           {labelText}
           <br />
           powered by

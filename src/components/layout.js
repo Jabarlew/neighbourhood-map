@@ -25,7 +25,7 @@ const Layout = ({
         type="button"
         onClick={toggleSidebar}
       >
-        <FontAwesomeIcon className={styles.menuIcon} icon="bars" />
+        <FontAwesomeIcon className={styles.menuIcon} icon="bars" tabindex="0" />
       </button>
       <h1>
         Neighbourhood Map

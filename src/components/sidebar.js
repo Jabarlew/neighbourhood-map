@@ -19,6 +19,7 @@ const Sidebar = ({
         </h2>
         <button
           type="button"
+          aria-label="Open"
           className={styles.closeButton}
           onClick={() => {
             toggleSidebar();
@@ -33,13 +34,19 @@ const Sidebar = ({
           type="text"
           className={styles.input}
           aria-label="Search"
+          role="textbox"
+          tabIndex="0"
           placeholder="Filter Locations"
           value={search}
           onChange={handleSearchChange}
         />
         <ul>
           {locations.map(location => (
-            <li key={location.name}>
+            <li
+              key={location.name}
+              tabIndex="2"
+              role="button"
+            >
               <button
                 type="button"
                 onClick={() => updateLocation(location.venueId)}
