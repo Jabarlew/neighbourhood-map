@@ -8,6 +8,7 @@ Single page app that uses Google Maps API and Foresquare API to list some of pla
 * Open the root folder using terminal
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
+* than open http://localhost:8080/
 
 ## Technologies Used
 
