@@ -10,6 +10,9 @@ function addClientTokens(url) {
 export async function getLocation(venueId) {
   const url = new URL(`https://api.foursquare.com/v2/venues/${venueId}/tips`);
   return fetch(addClientTokens(url))
-    .then(res => res.json())
+    .then((res) => {
+      if (!res.ok) throw new Error('Invalid request.');
+      return res.json();
+    })
     .then(res => res.response.tips.items[0]);
 }

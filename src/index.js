@@ -4,6 +4,10 @@ import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 import './index.scss';
 import App from './app';
 
+global.googleError = function () {
+  alert("Maps won't load");
+}
+
 
 OfflinePluginRuntime.install();
 

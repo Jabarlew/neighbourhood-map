@@ -47,11 +47,11 @@ GMap.propTypes = {
 // wrapped component lol (Higher Order Component [HOC])
 export default compose(
   withProps({
-    googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDPKkyWYaZAbfytTKMz87ImxdiF35-95o4&v=3.exp&libraries=geometry,drawing,places',
+    // googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDPKkyWYaZAbfytTKMz87ImxdiF35-95o4&v=3.exp&libraries=geometry,drawing,places',
     loadingElement: <Loading />,
     containerElement: <div style={{ height: '100vh', width: '100vw' }} />,
     mapElement: <div style={{ height: '100vh', width: '100vw' }} />,
   }),
-  withScriptjs,
+  // withScriptjs,
   withGoogleMap,
 )(GMap);
